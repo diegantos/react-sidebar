@@ -1,0 +1,16 @@
+.Sidebar{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: fit-content;
+    min-height: 100vh;
+    background-color: rgb(143, 143, 143);
+    padding: 2em;
+    &-ul{
+        list-style: none;
+    }
+    &-li:not(:last-child){
+        margin-bottom: 1em;
+    }
+}
