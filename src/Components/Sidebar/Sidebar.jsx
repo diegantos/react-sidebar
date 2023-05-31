@@ -9,12 +9,13 @@ export const Sidebar = () => {
     { id: 4, name: "Favourites", icon: "favorite" },
     { id: 5, name: "Search", icon: "search" },
   ]
-  const menuHeader = []
+  const menuHeader = ['menu','signup','settings']
+
   return (
     <>
       <div className="Sidebar">
         <header className="Sidebar-header">
-
+            
         </header>
         <ul className="Sidebar-ul">
           {menuItems.map(({ id, name, icon }) => (
