@@ -58,3 +58,25 @@ body{
         }
     }
 }
+.Sesion{
+    &-li{
+        margin: 1em;
+        position: relative;
+    }
+    &-icon{
+        position: absolute;
+        top: calc( 50% - 12px );
+        left: 0.5em;
+        color: rgba(255, 255, 255, 0.5);
+    }
+    &-input{
+        padding: 1em 1em 1em 3em;
+        border-radius: 0.5em;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+        background-color: transparent;
+        color: white;
+        &::placeholder{
+            color: rgba(255, 255, 255, 0.5);
+        }
+    }
+}

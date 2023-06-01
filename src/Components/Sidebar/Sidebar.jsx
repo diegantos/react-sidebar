@@ -52,7 +52,8 @@ export const Sidebar = () => {
               <span className="Sesion-icon material-symbols-outlined">{icon}</span>
               <input 
                 type={type}
-                placeholder={placeholder} />
+                placeholder={placeholder}
+                className="Sesion-input" />
             </li>
           ))}
         </ul>
