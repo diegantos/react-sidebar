@@ -54,11 +54,13 @@ export const Sidebar = () => {
         <ul className="Sesion">
           {userLogin.map(({id, icon, type, placeholder})=>(
             <li key={id} className="Sesion-li">
-              <span className="Sesion-icon material-symbols-outlined">{icon}</span>
-              <input 
-                type={type}
-                placeholder={placeholder}
-                className="Sesion-input" />
+              <form action="">
+                <span className="Sesion-icon material-symbols-outlined">{icon}</span>
+                <input 
+                  type={type}
+                  placeholder={placeholder}
+                  className="Sesion-input" />
+              </form>
             </li>
           ))}
         </ul>
