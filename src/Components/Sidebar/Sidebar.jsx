@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./Sidebar.scss";
 
 export const Sidebar = () => {
@@ -17,7 +17,7 @@ export const Sidebar = () => {
   ]
   const userLogin = [
     { id: 0, icon: 'account_circle', type: 'text', placeholder: 'Username'},
-    { id: 1, icon: 'password', type: 'password', placeholder: 'Password'},
+    { id: 1, icon: 'password', type: 'password', placeholder: 'Password', visibility: 'visibility'},
     { id: 2, icon: 'email', type: 'email', placeholder: 'Email'}
   ]
   const settings = [
@@ -36,6 +36,11 @@ export const Sidebar = () => {
       document.body.classList.add("dark")
     }
   }, [])
+
+  const [visibility, setVisibility] = useState('')
+  const handleVisibility = () => {
+    setVisibility('visibility_off')
+  }
 
   return (
     <>
@@ -64,7 +69,7 @@ export const Sidebar = () => {
         </ul>
 
         <ul className="Sesion">
-          {userLogin.map(({id, icon, type, placeholder})=>(
+          {userLogin.map(({id, icon, type, placeholder, visibility})=>(
             <li key={id} className="Sesion-li">
               <form action="">
                 <span className="Sesion-icon material-symbols-outlined">{icon}</span>
@@ -72,6 +77,9 @@ export const Sidebar = () => {
                   type={type}
                   placeholder={placeholder}
                   className="Sesion-input" />
+                <span 
+                  className="Sesion-icon2 material-symbols-outlined"
+                  onClick={handleVisibility}>{visibility}</span>
               </form>
             </li>
           ))}
