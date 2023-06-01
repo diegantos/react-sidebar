@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./Sidebar.scss";
 
 export const Sidebar = () => {
@@ -24,6 +25,17 @@ export const Sidebar = () => {
     { id: 1, name: 'Accesibility Mode'},
     { id: 2, name: 'Quirks Mode'}
   ]
+
+  const handleToggled = () => {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("dark", document.body.className);
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem("dark")) {
+      document.body.classList.add("dark")
+    }
+  }, [])
 
   return (
     <>
@@ -68,17 +80,14 @@ export const Sidebar = () => {
         <ul className="Setting">
           {settings.map(({id, name})=>(
             <li key={id} className="Setting-li">
-              <div className="Setting-name">{name}</div>
-              <span className="Setting-switch">
-                <input 
-                  className="Setting-input"
-                  type="checkbox"
-                  id="Setting-round" 
-                  name={name}
-                  // checked={false} 
-                  />
-                <label className="Setting-label" htmlFor="Setting-round"></label>
-              </span>
+              <label className="Setting-name" htmlFor="check">{name}</label>
+              <input 
+                id="check"
+                type="checkbox"
+                name={name}
+                className="Active"
+                onClick={handleToggled}
+                />
             </li>
           ))}
         </ul>
