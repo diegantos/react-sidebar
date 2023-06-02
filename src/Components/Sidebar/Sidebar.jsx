@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./Sidebar.scss";
 
 export const Sidebar = () => {
@@ -26,21 +26,19 @@ export const Sidebar = () => {
     { id: 2, name: 'Quirks Mode'}
   ]
 
-  const handleToggled = () => {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("dark", document.body.className);
-  }
-
-  useEffect(() => {
-    if (localStorage.getItem("dark")) {
-      document.body.classList.add("dark")
-    }
-  }, [])
-
   const [isVisible, setIsVisible] = useState(false)
+  const [activeTab, setActiveTab] = useState(0)
   
   const toggleVisibility = () => {
     setIsVisible(!isVisible)
+  }
+
+  const darkMode = () => {
+    document.body.classList.toggle("dark")
+
+    const sidebarClass = document.querySelector('.Sidebar')
+
+    sidebarClass.classList.toggle('dark')
   }
 
   return (
@@ -50,7 +48,9 @@ export const Sidebar = () => {
           <ul className="Header-ul">
             {menuHeader.map(({id, icon}) => (
               <li key={id} className="Header-li">
-                <button className="Header-button">
+                <button 
+                  className="Header-button"
+                  onClick={()=> setActiveTab(id)}>
                   <span className="material-symbols-outlined">{icon}</span>
                 </button>
               </li>
@@ -58,47 +58,50 @@ export const Sidebar = () => {
           </ul>
         </header>
 
-        <ul className="Sidebar-ul">
-          {menuItems.map(({ id, name, icon }) => (
-            <li key={id} className="Sidebar-li">
-              <button className="Sidebar-button">
-                <span className="material-symbols-outlined">{icon}</span>
-                <span className="Sidebar-span">{name}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div className="Container">
+          <ul className="Sidebar-ul">
+            {menuItems.map(({ id, name, icon }) => (
+              <li key={id} className="Sidebar-li">
+                <button className="Sidebar-button">
+                  <span className="material-symbols-outlined">{icon}</span>
+                  <span className="Sidebar-span">{name}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
 
-        <ul className="Sesion">
-          {userLogin.map(({id, icon, type, placeholder})=>(
-            <li key={id} className="Sesion-li">
-              <form action="">
-                <span className="Sesion-icon material-symbols-outlined">{icon}</span>
+          <ul className="Sesion">
+            {userLogin.map(({id, icon, type, placeholder})=>(
+              <li key={id} className="Sesion-li">
+                <form action="">
+                  <span className="Sesion-icon material-symbols-outlined">{icon}</span>
+                  <input 
+                    type={type === 'password' ? (isVisible ? 'text' : 'password') : type}
+                    placeholder={placeholder}
+                    className="Sesion-input" />
+                  {type === 'password' && <span 
+                    className="Sesion-icon2 material-symbols-outlined"
+                    onClick={toggleVisibility}>{isVisible ? 'visibility_off' : 'visibility'}</span>}
+                </form>
+              </li>
+            ))}
+          </ul>
+
+          <ul className="Setting">
+            {settings.map(({id, name})=>(
+              <li key={id} className="Setting-li">
+                <label className="Setting-name" htmlFor="check">{name}</label>
                 <input 
-                  type={type === 'password' ? (isVisible ? 'text' : 'password') : type}
-                  placeholder={placeholder}
-                  className="Sesion-input" />
-                {type === 'password' && <span 
-                  className="Sesion-icon2 material-symbols-outlined"
-                  onClick={toggleVisibility}>{isVisible ? 'visibility_off' : 'visibility'}</span>}
-              </form>
-            </li>
-          ))}
-        </ul>
-
-        <ul className="Setting">
-          {settings.map(({id, name})=>(
-            <li key={id} className="Setting-li">
-              <label className="Setting-name" htmlFor="check">{name}</label>
-              <input 
-                id="check"
-                type="checkbox"
-                name={name}
-                onClick={()=> name === 'Dark Mode' && handleToggled()}
-                />
-            </li>
-          ))}
-        </ul>
+                  id="check"
+                  type="checkbox"
+                  name={name}
+                  onClick={()=> name === 'Dark Mode' && darkMode()}
+                  />
+              </li>
+            ))}
+          </ul>
+        </div>
+        
       </aside>
     </>
   )
