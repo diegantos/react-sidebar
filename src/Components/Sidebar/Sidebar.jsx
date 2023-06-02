@@ -17,7 +17,7 @@ export const Sidebar = () => {
   ]
   const userLogin = [
     { id: 0, icon: 'account_circle', type: 'text', placeholder: 'Username'},
-    { id: 1, icon: 'password', type: 'password', placeholder: 'Password', visibility: 'visibility'},
+    { id: 1, icon: 'password', type: 'password', placeholder: 'Password'},
     { id: 2, icon: 'email', type: 'email', placeholder: 'Email'}
   ]
   const settings = [
@@ -70,7 +70,7 @@ export const Sidebar = () => {
         </ul>
 
         <ul className="Sesion">
-          {userLogin.map(({id, icon, type, placeholder, visibility})=>(
+          {userLogin.map(({id, icon, type, placeholder})=>(
             <li key={id} className="Sesion-li">
               <form action="">
                 <span className="Sesion-icon material-symbols-outlined">{icon}</span>
@@ -80,7 +80,7 @@ export const Sidebar = () => {
                   className="Sesion-input" />
                 {type === 'password' && <span 
                   className="Sesion-icon2 material-symbols-outlined"
-                  onClick={toggleVisibility}>{isVisible ? 'visibility_off' : visibility}</span>}
+                  onClick={toggleVisibility}>{isVisible ? 'visibility_off' : 'visibility'}</span>}
               </form>
             </li>
           ))}
@@ -94,8 +94,7 @@ export const Sidebar = () => {
                 id="check"
                 type="checkbox"
                 name={name}
-                className="Active"
-                onClick={handleToggled}
+                onClick={()=> name === 'Dark Mode' && handleToggled()}
                 />
             </li>
           ))}
