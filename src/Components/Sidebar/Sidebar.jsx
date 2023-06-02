@@ -37,9 +37,10 @@ export const Sidebar = () => {
     }
   }, [])
 
-  const [visibility, setVisibility] = useState('')
-  const handleVisibility = () => {
-    setVisibility('visibility_off')
+  const [isVisible, setIsVisible] = useState(false)
+  
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible)
   }
 
   return (
@@ -74,12 +75,12 @@ export const Sidebar = () => {
               <form action="">
                 <span className="Sesion-icon material-symbols-outlined">{icon}</span>
                 <input 
-                  type={type}
+                  type={type === 'password' ? (isVisible ? 'text' : 'password') : type}
                   placeholder={placeholder}
                   className="Sesion-input" />
-                <span 
+                {type === 'password' && <span 
                   className="Sesion-icon2 material-symbols-outlined"
-                  onClick={handleVisibility}>{visibility}</span>
+                  onClick={toggleVisibility}>{isVisible ? 'visibility_off' : visibility}</span>}
               </form>
             </li>
           ))}
