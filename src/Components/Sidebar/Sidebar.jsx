@@ -3,6 +3,8 @@ import "./Sidebar.scss";
 
 export const Sidebar = () => {
 
+  // const [activeTab, setActiveTab] = useState(0)
+
   return (
     <>
       <aside className="Sidebar">
@@ -28,11 +30,13 @@ const Header = () => {
     { id: 2, name: 'settings', icon:'settings'}
   ]
 
+  const [activeTab, setActiveTab] = useState(0)
+
   return(
     <header className="Header">
       <ul className="Header-ul">
         {menuHeader.map(({id, icon}) => (
-          <li key={id} className="Header-li">
+          <li key={id} className='Header-li'>
             <button 
               className="Header-button"
               onClick={()=> setActiveTab(id)}>
@@ -55,10 +59,11 @@ const Menu = () => {
     { id: 4, name: "Favourites", icon: "favorite" },
     { id: 5, name: "Search", icon: "search" }
   ]
+
   return(
     <ul className="Menu">
       {menuItems.map(({ id, name, icon }) => (
-        <li key={id} className="Menu-li">
+        <li key={id} className='Menu-li'>
           <button className="Menu-button">
             <span className="material-symbols-outlined">{icon}</span>
             <span className="Menu-span">{name}</span>
