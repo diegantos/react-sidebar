@@ -1,7 +1,7 @@
 # React sidebar
 
 ## Ejemplo en vivo
-![GIF](https://github.com/diegantos/react-sidebar/assets/118907489/7551a18b-3f02-4f5a-86a2-78b609fd448f)
+![GIF](https://github.com/diegantos/react-sidebar/assets/118907489/cd315503-a1c6-4474-ba70-a41f5d1a508e)
 
 ## Descripción 📑
 
