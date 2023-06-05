@@ -22,7 +22,7 @@ export const Sidebar = () => {
       <aside className="Sidebar">
 
         <header className="Header">
-          <ul className="Header-ul">
+          <ul className={`Header-ul Active${activeTab}`}>
             {menuHeader.map(({id, icon}) => (
               <li key={id} className='Header-li'>
                 <button 
