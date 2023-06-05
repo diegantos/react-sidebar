@@ -35,8 +35,14 @@ export const Sidebar = () => {
           </ul>
         </header>
 
-        <div className="Container">
-          {content[activeTab]}
+        <div 
+          className="Container"
+          style={{transform: `translateX(${activeTab === 0 ? 33.33 : -((activeTab/content.length)*100)+33.33}%)`}}
+          >
+          {/* {content[activeTab]} */}
+          <Menu />
+          <Sesion />
+          <Setting />
         </div>
         
       </aside>
