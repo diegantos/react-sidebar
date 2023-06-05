@@ -10,9 +10,9 @@ export const Sidebar = () => {
   ]
 
   const content = [
-    <Menu />,
-    <Sesion />,
-    <Setting />
+    { id: 0, component: <Menu />},
+    { id: 1, component: <Sesion />},
+    { id: 2, component: <Setting />},
   ]
 
   const [activeTab, setActiveTab] = useState(0)
@@ -39,7 +39,7 @@ export const Sidebar = () => {
           className="Container"
           style={{transform: `translateX(${activeTab === 0 ? 33.33 : -((activeTab/content.length)*100)+33.33}%)`}}
           >
-          {/* {content[activeTab]} */}
+          {/* {content[activeTab].component} */}
           <Menu />
           <Sesion />
           <Setting />
