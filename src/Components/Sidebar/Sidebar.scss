@@ -153,7 +153,14 @@ body{
 .Container{
     display: flex;
     align-items: flex-start;
-    width: 300%;
-    transform: translateX(33.33%);
-    overflow: hidden;
+    width: 100%;
+    // transform: translateY(33.33%);
+    // opacity: 0;
+    // overflow: hidden;
+    transition: all 0.4s ease;
 }
+// .Content{
+//     &.Active{
+//         transform: translateX(33.33%);
+//     }
+// }

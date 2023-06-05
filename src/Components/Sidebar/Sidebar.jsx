@@ -3,49 +3,44 @@ import "./Sidebar.scss";
 
 export const Sidebar = () => {
 
-  // const [activeTab, setActiveTab] = useState(0)
-
-  return (
-    <>
-      <aside className="Sidebar">
-
-        <Header />
-
-        <div className="Container">
-          <Menu />
-          <Sesion />
-          <Setting />
-        </div>
-        
-      </aside>
-    </>
-  )
-}
-
-const Header = () => {
-
   const menuHeader = [
     { id: 0, name: 'menu', icon:'menu'},
     { id: 1, name: 'signup', icon:'lock'},
     { id: 2, name: 'settings', icon:'settings'}
   ]
 
+  const content = [
+    <Menu />,
+    <Sesion />,
+    <Setting />
+  ]
+
   const [activeTab, setActiveTab] = useState(0)
 
-  return(
-    <header className="Header">
-      <ul className="Header-ul">
-        {menuHeader.map(({id, icon}) => (
-          <li key={id} className='Header-li'>
-            <button 
-              className="Header-button"
-              onClick={()=> setActiveTab(id)}>
-              <span className="material-symbols-outlined">{icon}</span>
-            </button>
-          </li>
-        ))}
-      </ul>
-    </header>
+  return (
+    <>
+      <aside className="Sidebar">
+
+        <header className="Header">
+          <ul className="Header-ul">
+            {menuHeader.map(({id, icon}) => (
+              <li key={id} className='Header-li'>
+                <button 
+                  className="Header-button"
+                  onClick={()=> setActiveTab(id)}>
+                  <span className="material-symbols-outlined">{icon}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </header>
+
+        <div className="Container">
+          {content[activeTab]}
+        </div>
+        
+      </aside>
+    </>
   )
 }
 
