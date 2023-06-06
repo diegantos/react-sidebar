@@ -5,7 +5,7 @@
 
 ## Descripción 📑
 
-Ejemplo de menú con tabs
+Ejemplo de menú con tabs usando iconos de material symbols https://marella.me/material-symbols/demo/
 
 ## Tecnologías 🛠
 <!-- Iconos sacados de: https://github.com/hendrasob/badges/blob/master/README.md y https://github.com/alexandresanlim/Badges4-README.md-Profile -->
